@@ -1,0 +1,22 @@
+{% block content %}
+<h2>Python Resources</h2>
+<table>
+    <tr>
+        <th>Resource</th>
+        <th>Resource Type</th>
+        <th>Resource URL</th>
+        <th>Resource Description</th>
+    </tr>
+    
+    <!--loop through all items in the resource list-->
+    {% for i in resource_list %}
+    <tr>
+        <td>{{i.resource}}</td>
+        <td>{{i.resourcetype}}</td>
+        <td>{{i.resourceurl}}</td>
+        <td>{{i.resourcedesc}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
