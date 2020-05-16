@@ -1,0 +1,18 @@
+{% block content %}
+<h2>Python Meetings</h2>
+<table>
+    <tr>
+        <th>Meeting Title</th>
+        <th>Date</th>
+    </tr>
+    
+    <!--loop through all items in the meeting list-->
+    {% for i in meeting_list %}
+    <tr>
+        <td><a href="{% url 'details' id=i.id %}">{{i.meetingtitle}}</a></td>
+        <td>{{i.meetingdate}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
