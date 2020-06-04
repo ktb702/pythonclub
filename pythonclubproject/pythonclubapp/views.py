@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Meeting, MeetingMinutes, Resource, Event
+from .forms import MeetingForm, ResourceForm
 
 # Create your views here.
 def index (request):
@@ -25,3 +26,32 @@ def meetingDetails(request, id):
         #'reviews' : reviews,
     }
     return render(request, 'pythonclubapp/details.html', context=context)
+
+#create view for new meeting form 
+def newMeeting(request):
+    meeting_form = MeetingForm
+    if request.method == 'POST':
+        meeting_form = MeetingForm(request.POST)
+        #if form is valid, save it and load the empty form. It's also possible to redirect to another page.
+        if meeting_form.is_valid():
+            post = form.save(commit=True)
+            post.save()
+            meeting_form = MeetingForm()
+    else: #if it isn't a POST or form is not valid, load empty form
+        meeting_form = MeetingForm()
+    return render(request, 'pythonclubapp/newmeeting.html', {'meeting_form': meeting_form})
+
+#create view for new resource form 
+def newResource(request):
+    resource_form = ResourceForm
+    if request.method == 'POST':
+        resource_form = ResourceForm(request.POST)
+        #if form is valid, save it and load the empty form. It's also possible to redirect to another page.
+        if resource_form.is_valid():
+            post = form.save(commit=True)
+            post.save()
+            resource_form = ResourceForm()
+    else: #if it isn't a POST or form is not valid, load empty form
+        resource_form = ResourceForm()
+    return render(request, 'pythonclubapp/newresource.html', {'resource_form': resource_form})
+

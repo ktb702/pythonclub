@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Add Resource</h2>
+<!-- classes used are formatting from bootstrap -->
+<form method='POST' class='post-form'>
+    <table class='table'>
+         {% csrf_token %} <!-- security check -->
+         {{ resource_form.as_table }} <!-- load form template -->
+    </table>
+    <button type='submit' class='save btn btn-default'>Save</button>
+</form>
+
+{% endblock %}
