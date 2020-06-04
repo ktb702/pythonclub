@@ -30,7 +30,7 @@ class MeetingMinutes(models.Model):
     minutes = models.TextField()
 
     def __str__(self):
-        return self.meetingid
+        return self.minutes
     
     class Meta():
         db_table='meetingminutes'
@@ -64,7 +64,7 @@ class Event(models.Model):
     userid = models.ForeignKey(User, on_delete=models.DO_NOTHING) 
 
     def __str__(self):
-        return self.resource
+        return self.event
     
     class Meta():
         db_table = 'event'
